@@ -24,4 +24,27 @@ router.get("/umra_records", (req, res) => {
   controller.fetchUmraController(res);
 });
 
+router.get("/records", async (req, res) => {
+  try {
+    // Fetch Hajj and Umra records from your API or database
+    const hajjResponse = await fetch(
+      "https://ansar-backend.onrender.com/hajj_records"
+    );
+    const umraResponse = await fetch(
+      "https://ansar-backend.onrender.com/umra_records"
+    );
+
+    const hajjRecords = await hajjResponse.json();
+    const umraRecords = await umraResponse.json();
+
+    // Render the EJS template and pass the records to it
+    res.render("records", {
+      hajjRecords: hajjRecords.data,
+      umraRecords: umraRecords.data,
+    });
+  } catch (error) {
+    res.status(500).send("Error fetching records");
+  }
+});
+
 module.exports = router;

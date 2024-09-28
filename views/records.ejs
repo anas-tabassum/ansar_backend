@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hajj and Umra Records</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="p-4">
+      <!-- Hajj Records -->
+      <% if (hajjRecords.length === 0) { %>
+      <p class="text-center">No Hajj records found.</p>
+      <% } else { %>
+      <div class="mb-8">
+        <h2 class="text-3xl font-semibold text-center mb-4">Hajj Records</h2>
+        <div class="flex justify-around items-center">
+          <% hajjRecords.forEach(function(record) { %>
+          <div class="border rounded-lg p-4 bg-blue-100 shadow-md w-[18rem]">
+            <p class="font-bold text-lg mb-2"><%= record.name %></p>
+            <p class="text-sm text-gray-600 mb-1">Email: <%= record.email %></p>
+            <p class="text-sm text-gray-600 mb-1">Phone: <%= record.phone %></p>
+            <p class="text-sm text-gray-600 mb-1">City: <%= record.city %></p>
+            <p class="text-sm text-gray-600 mb-1">
+              Country: <%= record.country %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Address: <%= record.address %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Camp Type: <%= record.campType %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Dietary Restriction: <%= record.dietaryRestriction %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Disabilities: <%= record.disabilities %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Age Restriction: <%= record.ageRestriction %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Hajj Before: <%= record.hajjBefore %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Last Hajj Year: <%= record.lastHajjYear %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              First Language: <%= record.firstLanguage %>
+            </p>
+
+            <!-- Travelers -->
+            <div class="mt-4">
+              <h3 class="text-md font-semibold">Travelers:</h3>
+              <% record.travelers.forEach(function(traveler) { %>
+              <div class="mt-2 p-2 bg-gray-100 rounded-md">
+                <p class="text-sm">Name: <%= traveler.name %></p>
+                <p class="text-sm">Gender: <%= traveler.gender %></p>
+                <p class="text-sm">Age: <%= traveler.age %></p>
+                <p class="text-sm">Email: <%= traveler.email %></p>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
+
+      <!-- Umra Records -->
+      <% if (umraRecords.length === 0) { %>
+      <p class="text-center">No Umra records found.</p>
+      <% } else { %>
+      <div>
+        <h2 class="text-3xl font-semibold text-center mb-4">Umra Records</h2>
+        <div class="flex justify-around items-center">
+          <% umraRecords.forEach(function(record) { %>
+          <div class="border rounded-lg p-4 bg-green-100 shadow-md w-[18rem]">
+            <p class="font-bold text-lg mb-2"><%= record.name %></p>
+            <p class="text-sm text-gray-600 mb-1">Email: <%= record.email %></p>
+            <p class="text-sm text-gray-600 mb-1">Phone: <%= record.phone %></p>
+            <p class="text-sm text-gray-600 mb-1">City: <%= record.city %></p>
+            <p class="text-sm text-gray-600 mb-1">
+              Country: <%= record.country %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Address: <%= record.address %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Dietary Restriction: <%= record.dietaryRestriction %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Disabilities: <%= record.disabilities %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              Age Restriction: <%= record.ageRestriction %>
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              First Language: <%= record.firstLanguage %>
+            </p>
+
+            <!-- Travelers -->
+            <div class="mt-4">
+              <h3 class="text-md font-semibold">Travelers:</h3>
+              <% record.travelers.forEach(function(traveler) { %>
+              <div class="mt-2 p-2 bg-gray-100 rounded-md">
+                <p class="text-sm">Name: <%= traveler.name %></p>
+                <p class="text-sm">Gender: <%= traveler.gender %></p>
+                <p class="text-sm">Age: <%= traveler.age %></p>
+                <p class="text-sm">Email: <%= traveler.email %></p>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
