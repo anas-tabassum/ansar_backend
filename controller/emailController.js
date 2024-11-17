@@ -7,10 +7,9 @@ const sendEmail = async(recipientEmail) => {
     if(emailValidator.validate(recipientEmail)) {
         transporter.sendMail(options, function (error, info) {
             if (error) {
-                return res.json({status: "Email Failed"});
+                console.log("Email Failed");
             } else {
                 console.log("Email sent");
-                return res.json({status: "Email sent"});
             }
         });
     }else{
