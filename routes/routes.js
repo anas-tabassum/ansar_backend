@@ -1,10 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controller/controller");
+const {sendEmail} = require("../controller/emailController");
 
 router.get("/test", (req, res) => {
   res.send("<h1>Ansar Backend is up and running :)</h1>");
 });
+
+// router.get("/email", (req, res) => {
+//   sendEmail("work632294@gmail.com");
+// });
 
 router.post("/hajj_book", (req, res) => {
   const data = req.body;
