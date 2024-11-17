@@ -9,7 +9,7 @@ const {sendEmail} = require('../controller/emailController')
 const registerHajjController = async (data, res) => {
   const response = await registerHajjModel(data);
   if (response) {
-    await sendEmail(data.email)
+    await sendEmail(data.email,data.name)
     res.json({
       status: "success",
       message: "Successfully registered for Hajj",
@@ -25,7 +25,7 @@ const registerHajjController = async (data, res) => {
 const registerUmraController = async (data, res) => {
   const response = await registerUmraModel(data);
   if (response) {
-    await sendEmail(data.email)
+    await sendEmail(data.email,data.name)
     res.json({
       status: "success",
       message: "Successfully registered for Umra",

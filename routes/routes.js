@@ -11,6 +11,10 @@ router.get("/test", (req, res) => {
 //   sendEmail("work632294@gmail.com");
 // });
 
+// router.get("/temp", (req, res) => {
+//   res.render('email',{name:"Anas"})
+// });
+
 router.post("/hajj_book", (req, res) => {
   const data = req.body;
   controller.registerHajjController(data, res);

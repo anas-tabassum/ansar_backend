@@ -13,9 +13,9 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const mailOptions = async (recipientEmail)=> {
+const mailOptions = async (recipientEmail,name)=> {
 const templatePath = path.join(__dirname, '..','views', 'email.ejs');
-const htmlContent = await ejs.renderFile(templatePath, {});
+const htmlContent = await ejs.renderFile(templatePath, {name});
     return {
         from: process.env.ZOHO_USER,
         to: recipientEmail,
