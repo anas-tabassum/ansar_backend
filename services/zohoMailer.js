@@ -13,8 +13,8 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const mailOptions = async (recipientEmail,name)=> {
-const templatePath = path.join(__dirname, '..','views', 'email.ejs');
+const mailOptionsUser = async (recipientEmail,name)=> {
+const templatePath = path.join(__dirname, '..','views', 'user-email-template.ejs');
 const htmlContent = await ejs.renderFile(templatePath, {name});
     return {
         from: process.env.ZOHO_USER,
@@ -24,5 +24,16 @@ const htmlContent = await ejs.renderFile(templatePath, {name});
     }
 };
 
+const mailOptionsCompany = async (data)=> {
+const templatePath = path.join(__dirname, '..','views', 'company-email-template.ejs');
+const htmlContent = await ejs.renderFile(templatePath, {data});
+    return {
+        from: process.env.ZOHO_USER,
+        to: "i_bacar22@hotmail.com, nouhou@ansarvoyage.com",
+        subject: 'Request submitted successfully.',
+        html: htmlContent
+    }
+};
 
-module.exports = { transporter,mailOptions };
+
+module.exports = { transporter,mailOptionsUser,mailOptionsCompany };

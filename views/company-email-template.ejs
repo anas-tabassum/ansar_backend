@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande d'inscription Oumra / Hajj</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+
+<!-- Main container -->
+<div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; padding: 20px;">
+
+    <!-- Header -->
+    <div style="text-align: center; padding-bottom: 20px;">
+        <h2 style="font-size: 24px; color: #333333; margin: 0;">Demande d'inscription <%= data.encounter_type %></h2>
+    </div>
+
+    <!-- Email Content -->
+    <div style="font-size: 16px; line-height: 1.6; color: #333333;">
+
+        <p style="margin: 10px 0; font-weight: bold;">Nom complet:</p>
+        <p style="margin: 10px 0;"><%= data.name %></p>
+
+        <p style="margin: 10px 0; font-weight: bold;">Adresse e-mail:</p>
+        <p style="margin: 10px 0;"><%= data.email %></p>
+
+        <p style="margin: 10px 0; font-weight: bold;">Numéro de téléphone (si requis):</p>
+        <p style="margin: 10px 0;"><%= data.phone %></p>
+
+        <p style="margin: 10px 0; font-weight: bold;">Plan d'abonnement:</p>
+        <p style="margin: 10px 0;"><%= data.meta %></p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

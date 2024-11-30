@@ -4,12 +4,13 @@ const {
   fetchHajjRecords,
   fetchUmraRecords,
 } = require("../model/model");
-const {sendEmail} = require('../controller/emailController')
+const {sendEmailUser,sendEmailCompany} = require('../controller/emailController')
 
 const registerHajjController = async (data, res) => {
   const response = await registerHajjModel(data);
   if (response) {
-    await sendEmail(data.email,data.name)
+    await sendEmailUser(data.email,data.name)
+    await sendEmailCompany(data)
     res.json({
       status: "success",
       message: "Successfully registered for Hajj",
@@ -25,7 +26,8 @@ const registerHajjController = async (data, res) => {
 const registerUmraController = async (data, res) => {
   const response = await registerUmraModel(data);
   if (response) {
-    await sendEmail(data.email,data.name)
+    await sendEmailUser(data.email,data.name)
+    await sendEmailCompany(data)
     res.json({
       status: "success",
       message: "Successfully registered for Umra",
