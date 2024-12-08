@@ -35,5 +35,17 @@ const htmlContent = await ejs.renderFile(templatePath, {data});
     }
 };
 
+const mailOptionsContact = async (data)=> {
+const templatePath = path.join(__dirname, '..','views', 'contact-email-template.ejs');
+const htmlContent = await ejs.renderFile(templatePath, {data});
+    return {
+        from: process.env.ZOHO_USER,
+        replyTo: data.email,
+        to: "contact@ansarvoyage.com",
+        subject: data.subject || 'New email from user 📧',
+        html: htmlContent
+    }
+};
 
-module.exports = { transporter,mailOptionsUser,mailOptionsCompany };
+
+module.exports = { transporter, mailOptionsUser, mailOptionsCompany, mailOptionsContact };

@@ -1,4 +1,4 @@
-const {transporter, mailOptionsUser,mailOptionsCompany} = require("../services/zohoMailer");
+const {transporter, mailOptionsUser,mailOptionsCompany, mailOptionsContact} = require("../services/zohoMailer");
 const emailValidator = require('email-validator');
 require("dotenv").config();
 
@@ -32,4 +32,21 @@ const sendEmailCompany = async(data) => {
     }
 }
 
-module.exports = {sendEmailUser,sendEmailCompany};
+const sendEmailContact = async(data,res) => {
+    const options = await mailOptionsContact(data);
+    if(emailValidator.validate(data.email)) {
+        transporter.sendMail(options, function (error, info) {
+            if (error) {
+                console.log("Email Failed");
+                return res.status(500).json({ success: false, message: "Email sending failed." });
+            } else {
+                console.log("User email sent to Contact");
+                return res.status(200).json({ success: true, message: "Email sent successfully." });
+            }
+        });
+    }else{
+        console.log("Invalid recipient email address");
+    }
+}
+
+module.exports = {sendEmailUser,sendEmailCompany,sendEmailContact};
