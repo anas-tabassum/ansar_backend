@@ -56,4 +56,12 @@ router.get("/records", async (req, res) => {
   }
 });
 
+router.get('/lectures', async (req, res) => {
+  try {
+    await controller.fetchLecturesController(req, res);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching videos', error: error.message });
+  }
+});
+
 module.exports = router;

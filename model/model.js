@@ -1,5 +1,6 @@
 const hajjSchema = require("../schema/hajjSchema");
 const umraSchema = require("../schema/umraSchema");
+const lectureSchema = require("../schema/lectureSchema");
 
 const registerHajjModel = async (data) => {
   try {
@@ -45,9 +46,20 @@ const fetchUmraRecords = async () => {
   }
 };
 
+const fetchLectures = async () => {
+  try {
+    return await lectureSchema.find();
+  } catch (error) {
+    console.error("Error fetching lectures:", error);
+    return [];
+  }
+};
+
+
 module.exports = {
   registerHajjModel,
   registerUmraModel,
   fetchHajjRecords,
   fetchUmraRecords,
+  fetchLectures
 };

@@ -3,6 +3,7 @@ const {
   registerUmraModel,
   fetchHajjRecords,
   fetchUmraRecords,
+  fetchLectures
 } = require("../model/model");
 const {sendEmailUser,sendEmailCompany} = require('../controller/emailController')
 
@@ -72,9 +73,25 @@ const fetchUmraController = async (res) => {
   }
 };
 
+const fetchLecturesController = async (req,res) => {
+  const response = await fetchLectures();
+  if (response) {
+    res.json({
+      data: response,
+      status: "success",
+    });
+  } else {
+    res.json({
+      status: "fail",
+      message: "Failed to load lectures",
+    });
+  }
+};
+
 module.exports = {
   registerHajjController,
   registerUmraController,
   fetchHajjController,
   fetchUmraController,
+  fetchLecturesController
 };
