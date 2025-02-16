@@ -1,6 +1,7 @@
 const connectToDatabase = require("./config/db.js");
 const express = require("express");
 const routes = require("./routes/routes");
+const adminRoutes = require("./routes/adminRoutes");
 const cors = require("cors");
 const path = require("path");
 const app = express();
@@ -15,6 +16,7 @@ const port = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors());
 app.use("/", routes);
+app.use("/admin", adminRoutes);
 
 connectToDatabase()
   .then(() => {

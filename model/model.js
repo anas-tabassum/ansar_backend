@@ -1,6 +1,7 @@
 const hajjSchema = require("../schema/hajjSchema");
 const umraSchema = require("../schema/umraSchema");
 const lectureSchema = require("../schema/lectureSchema");
+const userSchema = require("../schema/user");
 
 const registerHajjModel = async (data) => {
   try {

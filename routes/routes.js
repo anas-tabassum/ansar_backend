@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controller/controller");
-const {sendEmailContact} = require("../controller/emailController");
+const { sendEmailContact } = require("../controller/emailController");
+const admin = require("../model/createAdmin");
 
 router.get("/test", (req, res) => {
   res.send("<h1>Ansar Backend is up and running :)</h1>");
@@ -12,7 +13,7 @@ router.get("/test", (req, res) => {
 // });
 
 router.post("/contact_email", (req, res) => {
-  sendEmailContact(req.body,res)
+  sendEmailContact(req.body, res);
 });
 
 router.post("/hajj_book", (req, res) => {
@@ -23,6 +24,11 @@ router.post("/hajj_book", (req, res) => {
 router.post("/umra_book", (req, res) => {
   const data = req.body;
   controller.registerUmraController(data, res);
+});
+
+router.post("/admin-login", (req, res) => {
+  const data = req.body;
+  controller.adminLoginController(data, res);
 });
 
 router.get("/hajj_records", (req, res) => {
@@ -56,11 +62,13 @@ router.get("/records", async (req, res) => {
   }
 });
 
-router.get('/lectures', async (req, res) => {
+router.get("/lessons", async (req, res) => {
   try {
     await controller.fetchLecturesController(req, res);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching videos', error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching videos", error: error.message });
   }
 });
 
