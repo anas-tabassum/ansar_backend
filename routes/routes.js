@@ -41,7 +41,6 @@ router.get("/umra_records", (req, res) => {
 
 router.get("/records", async (req, res) => {
   try {
-    // Fetch Hajj and Umra records from your API or database
     const hajjResponse = await fetch(
       "https://ansar-backend.onrender.com/hajj_records"
     );
@@ -52,7 +51,6 @@ router.get("/records", async (req, res) => {
     const hajjRecords = await hajjResponse.json();
     const umraRecords = await umraResponse.json();
 
-    // Render the EJS template and pass the records to it
     res.render("records", {
       hajjRecords: hajjRecords.data,
       umraRecords: umraRecords.data,
