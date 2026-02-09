@@ -60,6 +60,18 @@ router.get("/records", async (req, res) => {
   }
 });
 
+
+router.get("/lessons/:year", async (req, res) => {
+    try {
+          const Lesson = require("../schema/lectureSchema");
+          const lessons = await Lesson.find({ year: req.params.year });
+          res.json({ data: lessons, status: "success" });
+    } catch (error) {
+          res
+            .status(500)
+            .json({ message: "Error fetching videos", error: error.message });
+    }
+});
 router.get("/lessons", async (req, res) => {
   try {
     await controller.fetchLecturesController(req, res);
